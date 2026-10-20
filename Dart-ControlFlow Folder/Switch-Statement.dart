@@ -17,4 +17,21 @@ void main() {
     default:
       print('YOOOO');
   }
+
+  // int button = 2;
+
+  var selectedButton = drink.pepsi;
+
+  switch (selectedButton) {
+    case drink.pepsi:
+      print("Hpooooo");
+
+    case drink.sprite:
+      print("moooo");
+    case drink.coke:
+      print("Coke  Lelo");
+
+  }
 }
+
+enum drink { coke, pepsi, sprite }
