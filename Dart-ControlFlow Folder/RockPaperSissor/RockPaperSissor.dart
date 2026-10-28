@@ -1,72 +1,70 @@
+
 import 'dart:io';
 import 'dart:math';
 
 void main() {
-  print("===Rock Paper Sissors ===");
-  print("R-> Rock  , p-> Paper , S-> Sissors");
-
-  print("Q ->Quit");
+  print("=== Rock Paper Scissors ===");
+  print("R -> Rock, P -> Paper, S -> Scissors");
+  print("Q -> Quit");
 
   Random random = Random();
 
+  // Declare score outside the loop
+  int userWon = 0;
+  int computerWon = 0;
+  int draws = 0;
+
+  List<String> options = ['r', 'p', 's'];
+
   while (true) {
-    stdout.write("Enter YouR Choices:- (R/P/S)");
+    stdout.write("Enter Your Choice (R/P/S): ");
 
     String? userInput = stdin.readLineSync();
 
     if (userInput == null) {
-      print("Input not  Found : , Please Retry");
+      print("Input not found. Please retry.");
       continue;
     }
 
     String userChoice = userInput.trim().toLowerCase();
 
-    // Quit Conditions
-
     if (userChoice == 'q') {
-      print("Game Over");
+      print("Game Over!");
       break;
     }
 
-    //valid input Check
-    if (userChoice != 'r' && userChoice != 'p' && userChoice != 's') {
-      print("Please Enter valid String (r,p,s)");
+    if (!options.contains(userChoice)) {
+      print("Please enter a valid choice (R, P, S).");
       continue;
     }
 
-    // computer Choice
+    String computerChoice = options[random.nextInt(3)];
 
-    List<String> options = ['r', 'p', 's'];
+    print("User Choice: ${userChoice.toUpperCase()}");
+    print("Computer Choice: ${computerChoice.toUpperCase()}");
 
-    String computerchoice = options[random.nextInt(3)];
-
-    //show userChoice
-    if (userChoice == 'r') {
-      print("user Choice Rock");
-    } else if (userChoice == 'p') {
-      print("user Choice Paper");
+    if (userChoice == computerChoice) {
+      print("Result: Draw!");
+      draws++;
+    } else if ((userChoice == 'r' && computerChoice == 's') ||
+        (userChoice == 'p' && computerChoice == 'r') ||
+        (userChoice == 's' && computerChoice == 'p')) {
+      print("User Won!");
+      userWon++;
     } else {
-      print("user Choice Sissors ");
+      print("Computer Won!");
+      computerWon++;
     }
 
-    // show commputer choice
-    if (computerchoice == 'r') {
-      print("Computer Choice Rock");
-    } else if (computerchoice == 'p') {
-      print("computer Choice Paper");
-    } else {
-      print("computer Choice Sissors ");
-    }
-
-    // Result Logic
-    if (userChoice == computerchoice) {
-      print("Result Drawwwww");
-    } else if ((userChoice == 'r' && computerchoice == 's') ||
-        (userChoice == 'p' && computerchoice == 'r') ||
-        (userChoice == 's' && computerchoice == 'p')) {
-      print("User Won");
-    } else {
-      print("Computer Won");
-    }
+    print("\n--- Scoreboard ---");
+    print("User Wins: $userWon");
+    print("Computer Wins: $computerWon");
+    print("Draws: $draws");
+    print("------------------\n");
   }
+
+  print("\n=== Final Score ===");
+  print("User Wins: $userWon");
+  print("Computer Wins: $computerWon");
+  print("Draws: $draws");
 }
