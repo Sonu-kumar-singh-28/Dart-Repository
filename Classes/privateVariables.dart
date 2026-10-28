@@ -1,6 +1,7 @@
 void main() {
   Cookie cookie = Cookie();
 
+  print(cookie);
 }
 
 class Cookie {
