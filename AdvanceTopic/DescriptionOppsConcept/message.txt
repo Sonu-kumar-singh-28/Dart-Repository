@@ -1,0 +1,6 @@
+// this file represent the Four Piller of the Opps Concept in dart where we learn 
+
+1.  incapsulation // Data Hiding 
+2. Abstraction   // 
+3. Inheritance  // used to access the another property of another class...
+4. Polymorphism  // Many Form 
